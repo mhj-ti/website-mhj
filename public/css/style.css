@@ -708,6 +708,43 @@ section {
     font-size: 0.9rem;
 }
 
+.footer-contact h4 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1rem;
+}
+
+.footer-contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+.footer-contact-list li i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    width: 20px;
+    text-align: center;
+}
+
+.footer-contact-list li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-contact-list li a:hover {
+    color: var(--secondary-color);
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .nav-menu {
