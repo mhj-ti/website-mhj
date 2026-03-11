@@ -115,61 +115,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Formulário de Contato
+// Formulário de Contato — Formspree (envia para comercial@mhjti.com.br)
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Coletar dados do formulário
-    const formData = {
-        nome: document.getElementById('nome').value,
-        email: document.getElementById('email').value,
-        telefone: document.getElementById('telefone').value,
-        assunto: document.getElementById('assunto').value,
-        cidade: document.getElementById('cidade').value,
-        mensagem: document.getElementById('mensagem').value
-    };
-
-    // Desabilitar botão durante envio
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span>Enviando...</span> <i class="fas fa-spinner fa-spin"></i>';
 
+    const formData = {
+        nome:      document.getElementById('nome').value.trim(),
+        email:     document.getElementById('email').value.trim(),
+        telefone:  document.getElementById('telefone').value.trim(),
+        cidade:    document.getElementById('cidade').value.trim(),
+        assunto:   document.getElementById('assunto').value.trim(),
+        mensagem:  document.getElementById('mensagem').value.trim()
+    };
+
     try {
-        // Enviar para o backend
-        const response = await fetch('/api/contato', {
+        // Substitua SEU_ID_FORMSPREE pelo ID gerado em https://formspree.io
+        const response = await fetch('https://formspree.io/f/xqeyqwga', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(formData)
         });
 
         const result = await response.json();
 
-        if (result.success) {
+        if (response.ok) {
             formMessage.className = 'form-message success';
-            formMessage.textContent = result.message;
+            formMessage.textContent = '✅ Mensagem enviada com sucesso! Entraremos em contato em breve.';
             contactForm.reset();
-
-            // Remover mensagem após 5 segundos
-            setTimeout(() => {
-                formMessage.style.display = 'none';
-            }, 5000);
+            setTimeout(() => { formMessage.style.display = 'none'; }, 6000);
         } else {
             formMessage.className = 'form-message error';
-            formMessage.textContent = result.message;
+            formMessage.textContent = '❌ Erro ao enviar. Tente novamente ou ligue para nós.';
         }
 
     } catch (error) {
         formMessage.className = 'form-message error';
-        formMessage.textContent = 'Erro ao enviar mensagem. Por favor, tente novamente.';
+        formMessage.textContent = '❌ Erro de conexão. Verifique sua internet e tente novamente.';
         console.error('Erro:', error);
     } finally {
-        // Reabilitar botão
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
     }
