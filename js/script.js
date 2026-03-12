@@ -57,11 +57,9 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
     if (currentScroll > 100) {
-        header.style.background = 'rgba(26, 26, 46, 0.98)';
-        header.style.padding = '0.5rem 0';
+        header.style.background = 'rgba(10, 10, 25, 0.98)';
     } else {
-        header.style.background = 'rgba(26, 26, 46, 0.95)';
-        header.style.padding = '1rem 0';
+        header.style.background = 'rgba(10, 10, 25, 0.9)';
     }
 
     lastScroll = currentScroll;
@@ -228,5 +226,4 @@ window.addEventListener('load', () => {
     document.body.style.overflow = 'auto';
 });
 
-// Log para debug (remover em produção)
-console.log('MHJ TI - Site carregado com sucesso! 🚀');
+
