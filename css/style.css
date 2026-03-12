@@ -321,9 +321,9 @@ section {
 }
 
 /* Serviços Destaque */
-.services-highlight {
+/* .services-highlight {
     background: var(--light-gray);
-}
+} */
 
 .services-grid {
     display: grid;
