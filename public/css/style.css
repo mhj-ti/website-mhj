@@ -55,6 +55,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    padding: 1.0rem;
 }
 
 /* Header e Navegação */
@@ -88,7 +89,8 @@ body {
 }
 
 .logo-img {
-    height: 85px;
+    height: 60px;
+    padding: 0.5rem;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
@@ -99,7 +101,7 @@ body {
 }
 
 .footer-logo {
-    height: 100px;
+    height: 60px;
 }
 
 .nav-menu {
