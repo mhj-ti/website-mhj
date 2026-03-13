@@ -501,11 +501,15 @@ section {
 
 .infra-card {
     background: var(--white);
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-md);
     border-radius: var(--border-radius);
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
 }
 
 .infra-card:hover {
@@ -514,7 +518,7 @@ section {
 }
 
 .infra-card i {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: var(--spacing-sm);
 }
@@ -802,9 +806,12 @@ section {
     }
 
     .services-grid,
-    .differentials-grid,
-    .infrastructure-grid {
+    .differentials-grid {
         grid-template-columns: 1fr;
+    }
+
+    .servicos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
